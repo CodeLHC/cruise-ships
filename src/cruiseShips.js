@@ -4,13 +4,30 @@
 
 // properties - STARTING PORT
 
-function Ship(portName) {
-  this.startingPort = portName;
-  this.currentPort = portName;
+class Ship {
+  constructor(port) {
+    this.startingPort = port;
+    this.setCurrentPort(port);
+  }
+
+  // shouldn't be visible from outside of the class
+  setCurrentPort(port) {
+    this.currentPort = port;
+  }
+
+  setSail() {
+    this.setCurrentPort(null);
+  }
+
+  dock(port) {
+    this.setCurrentPort(port);
+  }
 }
 
-Ship.prototype.setSail = function () {
-  this.currentPort = "";
-};
+class Port {
+  constructor(name) {
+    this.name = name;
+  }
+}
 
-module.exports = Ship;
+module.exports = { Ship, Port };
