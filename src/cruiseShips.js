@@ -1,13 +1,9 @@
-// object - SHIP
-
-//method -
-
-// properties - STARTING PORT
-
 class Ship {
-  constructor(port) {
-    this.startingPort = port;
-    this.setCurrentPort(port);
+  constructor(itinerary) {
+    this.previousPort = null;
+    this.startingPort = itinerary.ports[0];
+    this.setCurrentPort(itinerary.ports[0]);
+    this.itinerary = itinerary;
   }
 
   // shouldn't be visible from outside of the class
@@ -15,11 +11,24 @@ class Ship {
     this.currentPort = port;
   }
 
+  setPreviousPort(port) {
+    this.previousPort = port;
+  }
+
   setSail() {
+    this.setPreviousPort(this.currentPort);
     this.setCurrentPort(null);
   }
 
-  dock(port) {
+  getPortIndex(port) {
+    return this.itinerary.ports.findIndex(({ name }) => {
+      return port.name === name;
+    });
+  }
+
+  dock() {
+    const previousPortIndex = this.getPortIndex(this.previousPort);
+    const port = this.itinerary.ports[previousPortIndex + 1];
     this.setCurrentPort(port);
   }
 }
@@ -30,4 +39,10 @@ class Port {
   }
 }
 
-module.exports = { Ship, Port };
+class Itinerary {
+  constructor(ports) {
+    this.ports = ports;
+  }
+}
+
+module.exports = { Ship, Port, Itinerary };

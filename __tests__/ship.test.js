@@ -1,34 +1,39 @@
-const { Ship, Port } = require("../src/cruiseShips");
+const { Ship, Port, Itinerary } = require("../src/cruiseShips");
+
+const aruba = new Port("Aruba");
+const jamaica = new Port("Jamaica");
+const ports = [aruba, jamaica];
+const itinerary = new Itinerary(ports);
 
 describe("ship constructor", () => {
-  const cuba = new Port("Cuba");
   test("returns a ship object", () => {
-    expect(new Ship(cuba)).toBeInstanceOf(Object);
+    expect(new Ship(itinerary)).toBeInstanceOf(Ship);
   });
   test("shows starting port and current port", () => {
-    const ship = new Ship(cuba);
-    expect(ship.startingPort).toEqual(cuba);
-    expect(ship.currentPort).toEqual(cuba);
+    const ship = new Ship(itinerary);
+    expect(ship.startingPort).toEqual(aruba);
+    expect(ship.currentPort).toEqual(aruba);
+  });
+  test("shows previous port", () => {
+    const ship = new Ship(itinerary);
+    expect(ship.previousPort).toEqual(null);
   });
 });
 
 describe("set sail", () => {
-  const cuba = new Port("Cuba");
   test("moves from starting port", () => {
-    const ship = new Ship(cuba);
+    const ship = new Ship(itinerary);
     ship.setSail();
     expect(ship.currentPort).toEqual(null);
+    expect(ship.previousPort).toEqual(aruba);
   });
 });
 
 describe("dock", () => {
   test("ship can dock", () => {
-    const cuba = new Port("Cuba");
-    const jamaica = new Port("Jamaica");
-    const ship = new Ship(cuba);
-    console.log(ship);
+    const ship = new Ship(itinerary);
     ship.setSail();
-    ship.dock(jamaica);
+    ship.dock();
     expect(ship.currentPort).toEqual(jamaica);
   });
 });

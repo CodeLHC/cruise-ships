@@ -1,4 +1,4 @@
-const { Ship, Port } = require("../src/cruiseShips");
+const { Ship, Port, Itinerary } = require("../src/cruiseShips");
 
 describe("port constructor", () => {
   test("returns a port object", () => {
