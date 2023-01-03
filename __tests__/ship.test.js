@@ -18,22 +18,43 @@ describe("ship constructor", () => {
     const ship = new Ship(itinerary);
     expect(ship.previousPort).toEqual(null);
   });
+  test("gets added to port on instantiation", () => {
+    const bermuda = new Port("Bermuda");
+    const bahamas = new Port("Bahamas");
+    const ports2 = [bermuda, bahamas];
+    const itinerary2 = new Itinerary(ports2);
+    const ship = new Ship(itinerary2);
+
+    expect(ship.currentPort.ships).toEqual([ship]);
+  });
 });
 
 describe("set sail", () => {
   test("moves from starting port", () => {
-    const ship = new Ship(itinerary);
-    ship.setSail();
-    expect(ship.currentPort).toEqual(null);
-    expect(ship.previousPort).toEqual(aruba);
+    const aruba = new Port("Aruba");
+    const jamaica = new Port("Jamaica");
+    const ports2 = [aruba, jamaica];
+    const itinerary2 = new Itinerary(ports2);
+
+    const titanic = new Ship(itinerary2);
+    titanic.setSail();
+    expect(titanic.currentPort).toEqual(null);
+    expect(titanic.previousPort).toEqual(aruba);
+    expect(aruba.ships).toHaveLength(0);
   });
 });
 
 describe("dock", () => {
   test("ship can dock", () => {
-    const ship = new Ship(itinerary);
-    ship.setSail();
-    ship.dock();
-    expect(ship.currentPort).toEqual(jamaica);
+    const aruba = new Port("Aruba");
+    const jamaica = new Port("Jamaica");
+    const ports2 = [aruba, jamaica];
+    const itinerary2 = new Itinerary(ports2);
+
+    const titanic = new Ship(itinerary2);
+    titanic.setSail();
+    titanic.dock();
+    expect(titanic.currentPort).toEqual(jamaica);
+    expect(titanic.currentPort.ships[0]).toEqual(titanic);
   });
 });
