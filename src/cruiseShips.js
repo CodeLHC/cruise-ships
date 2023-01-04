@@ -1,9 +1,9 @@
 class Ship {
   constructor(itinerary) {
     this.previousPort = null;
+    this.itinerary = itinerary;
     this.startingPort = itinerary.ports[0];
     this.setCurrentPort(itinerary.ports[0]);
-    this.itinerary = itinerary;
     this.currentPort.addShip(this);
   }
 
@@ -50,7 +50,6 @@ class Port {
     }
     const findShipsIndex = this.ships.findIndex(findShip);
     const updatedShipArray = this.ships.splice(findShipsIndex, 1);
-    console.log({ findShipsIndex, updatedShipArray });
   }
 }
 
