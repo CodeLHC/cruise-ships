@@ -12,8 +12,8 @@ beforeEach(() => {
   jamaica = new Port("Jamaica");
   ports = [aruba, jamaica];
   itinerary = new Itinerary(ports);
-  ship = new Ship(itinerary);
-  HMSngl = new Ship(itinerary);
+  ship = jest.fn();
+  HMSngl = jest.fn();
 });
 
 describe("port constructor", () => {

@@ -7,8 +7,18 @@ let itinerary;
 let ship;
 
 beforeEach(() => {
-  aruba = new Port("Aruba");
-  jamaica = new Port("Jamaica");
+  aruba = {
+    addShip: jest.fn(),
+    removeShip: jest.fn(),
+    name: "Aruba",
+    ships: [],
+  };
+  jamaica = {
+    addShip: jest.fn(),
+    removeShip: jest.fn(),
+    name: "Jamaica",
+    ships: [],
+  };
   ports = [aruba, jamaica];
   itinerary = new Itinerary(ports);
   ship = new Ship(itinerary);
@@ -18,34 +28,19 @@ describe("ship constructor", () => {
     expect(new Ship(itinerary)).toBeInstanceOf(Ship);
   });
   test("shows starting port and current port", () => {
-    // const ship = new Ship(itinerary);
     expect(ship.startingPort).toEqual(aruba);
     expect(ship.currentPort).toEqual(aruba);
   });
   test("shows previous port", () => {
-    // const ship = new Ship(itinerary);
     expect(ship.previousPort).toEqual(null);
   });
   test("gets added to port on instantiation", () => {
-    // const bermuda = new Port("Bermuda");
-    // const bahamas = new Port("Bahamas");
-    // const ports2 = [bermuda, bahamas];
-    // const itinerary2 = new Itinerary(ports2);
-    // const ship = new Ship(itinerary2);
-
-    expect(ship.currentPort.ships).toEqual([ship]);
+    expect(aruba.addShip).toHaveBeenCalledWith(ship);
   });
 });
 
 describe("set sail", () => {
   test("moves from starting port", () => {
-    // const aruba = new Port("Aruba");
-    // const jamaica = new Port("Jamaica");
-    // const ports2 = [aruba, jamaica];
-    // const itinerary2 = new Itinerary(ports2);
-
-    // const titanic = new Ship(itinerary2);
-    // titanic.setSail();
     ship.setSail();
     expect(ship.currentPort).toEqual(null);
     expect(ship.previousPort).toEqual(aruba);
@@ -55,15 +50,9 @@ describe("set sail", () => {
 
 describe("dock", () => {
   test("ship can dock", () => {
-    // const aruba = new Port("Aruba");
-    // const jamaica = new Port("Jamaica");
-    // const ports2 = [aruba, jamaica];
-    // const itinerary2 = new Itinerary(ports2);
-
-    // const titanic = new Ship(itinerary2);
     ship.setSail();
     ship.dock();
     expect(ship.currentPort).toEqual(jamaica);
-    expect(ship.currentPort.ships[0]).toEqual(ship);
+    expect(jamaica.addShip).toHaveBeenCalledWith(ship);
   });
 });
