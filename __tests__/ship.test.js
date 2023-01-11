@@ -20,7 +20,9 @@ beforeEach(() => {
     ships: [],
   };
   ports = [aruba, jamaica];
-  itinerary = new Itinerary(ports);
+  itinerary = {
+    ports: [aruba, jamaica],
+  };
   ship = new Ship(itinerary);
 });
 describe("ship constructor", () => {
