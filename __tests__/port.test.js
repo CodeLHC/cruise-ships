@@ -1,4 +1,6 @@
-const { Ship, Port, Itinerary } = require("../src/cruiseShips");
+const { Ship } = require("../src/ship");
+const { Port } = require("../src/port");
+const { Itinerary } = require("../src/itinerary");
 
 let aruba;
 let jamaica;

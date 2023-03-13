@@ -1,4 +1,6 @@
-const { Ship, Port, Itinerary } = require("../src/cruiseShips");
+const { Ship } = require("../src/ship");
+const { Port } = require("../src/port");
+const { Itinerary } = require("../src/itinerary");
 
 describe("itinerary", () => {
   test("returns a itinerary object", () => {

@@ -1,3 +1,6 @@
+const { Port } = require("./port");
+const { Itinerary } = require("./itinerary");
+
 class Ship {
   constructor(itinerary) {
     this.previousPort = null;
@@ -36,27 +39,8 @@ class Ship {
   }
 }
 
-class Port {
-  constructor(name) {
-    this.name = name;
-    this.ships = [];
-  }
-  addShip(ship) {
-    this.ships.push(ship);
-  }
-  removeShip(shipToRemove) {
-    function findShip(ship) {
-      return ship === shipToRemove;
-    }
-    const findShipsIndex = this.ships.findIndex(findShip);
-    const updatedShipArray = this.ships.splice(findShipsIndex, 1);
-  }
-}
 
-class Itinerary {
-  constructor(ports) {
-    this.ports = ports;
-  }
-}
 
-module.exports = { Ship, Port, Itinerary };
+
+
+module.exports = { Ship };
