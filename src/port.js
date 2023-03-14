@@ -1,6 +1,7 @@
 const { Ship } = require("../src/ship");
 const { Itinerary } = require("./itinerary");
 
+(function exportPort() {
 class Port {
     constructor(name) {
       this.name = name;
@@ -17,5 +18,10 @@ class Port {
       const updatedShipArray = this.ships.splice(findShipsIndex, 1);
     }
   }
+  if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { Port };
+  } else {
+    window.Port = Port;
+  }
+}());
 
-  module.exports = { Port };
