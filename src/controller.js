@@ -34,7 +34,6 @@ class Controller{
   }
 
   renderShip(ship){
-    //const ship = this.ship
             const shipPortIndex = ship.itinerary.ports.indexOf(ship.currentPort);
             const portElement = document.querySelector(`[data-port-index='${shipPortIndex}']`);
             const shipElement = document.querySelector('#ship');
