@@ -1,7 +1,4 @@
-const { Port } = require("./port");
-const { Itinerary } = require("./itinerary");
-
-(function exportShip(){
+(function exportShip() {
 class Ship {
   constructor(itinerary) {
     this.previousPort = null;
@@ -40,9 +37,9 @@ class Ship {
   }
 }
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { Ship };
+  module.exports =  Ship ;
 } else {
   window.Ship = Ship;
 }
-}());
+})();
 

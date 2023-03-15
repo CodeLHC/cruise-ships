@@ -4,28 +4,34 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Cruise Ships</title>
     <link rel="stylesheet" href="./css/normalize.css" />
     <link rel="stylesheet" href="./css/style.css" />
+
+    
+
   </head>
   <body>
     <div id="viewport">
-      <div id="ports">
-        
-      </div>
-    </div>
+      <div id="ports"></div>
+      <div id="ship"></div>
     <script src="src/controller.js"></script>
     <script src="src/port.js"></script>
     <script src="src/itinerary.js"></script>
+    <script src="src/ship.js"></script>
     <script>
-      const controller = new Controller();
       const itinerary = new Itinerary([
         new Port('Aruba'),
         new Port('Jamaica'),
         new Port('Bermuda'),
-        new Port('Bahama'),
+        new Port('Bahama')
       ]);
+      const ship = new Ship(itinerary);
+      const controller = new Controller(ship);
+      
       controller.renderPorts(itinerary.ports);
+      controller.renderShip(ship)
     </script>
+    </div>
   </body>
 </html>

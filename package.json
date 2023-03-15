@@ -1,7 +1,7 @@
 {
   "name": "cruise-ships",
   "version": "1.0.0",
-  "description": "",
+  "description": "cruise ship project",
   "main": "index.js",
   "scripts": {
     "test": "jest"
@@ -10,11 +10,8 @@
     "type": "git",
     "url": "git+https://github.com/CodeLHC/cruise-ships.git"
   },
-  "author": "",
+  "author": "Laura Crawford",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/CodeLHC/cruise-ships/issues"
-  },
   "homepage": "https://github.com/CodeLHC/cruise-ships#readme",
   "devDependencies": {
     "jest": "^29.3.1"

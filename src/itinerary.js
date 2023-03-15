@@ -1,6 +1,3 @@
-const { Ship } = require("../src/ship");
-const { Port } = require("./port");
-
 (function exportItinerary() {
 class Itinerary {
     constructor(ports) {
@@ -8,8 +5,8 @@ class Itinerary {
     }
   }
   if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { Itinerary };
+    module.exports =  Itinerary;
   } else {
     window.Itinerary = Itinerary;
   }
-}());
+})();
