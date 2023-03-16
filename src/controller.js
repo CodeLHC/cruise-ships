@@ -53,8 +53,11 @@ class Controller{
   const nextPortElement = document.querySelector(`[data-port-index='${nextPortIndex}']`);
     
   if (!nextPortElement) {
-    return alert('End of the line!');
+    return this.renderMessage('End of the line!');
   }
+
+this.renderMessage(`Now departing ${ship.currentPort.name}`);
+
   const shipElement = document.querySelector('#ship');
   const sailing = setInterval(() => {
    const shipLeft = parseInt(shipElement.style.left, 10);
@@ -62,11 +65,26 @@ class Controller{
          ship.setSail();
         ship.dock();
    clearInterval(sailing);
+   this.renderMessage(`Now arriving ${ship.currentPort.name}`);
    }
     
   shipElement.style.left = `${shipLeft + 1}px`;
   }, 5);
   }
+
+renderMessage(message) {
+ const messageElement = document.createElement('div');
+ messageElement.id = 'message';
+ messageElement.innerHTML = message;
+ 
+ const viewport = document.querySelector('#viewport');
+ viewport.appendChild(messageElement);
+
+ setTimeout(() => {
+  viewport.removeChild(messageElement);
+}, 2000);
+}
+
 }
 
 if (typeof module !== 'undefined' && module.exports) {
