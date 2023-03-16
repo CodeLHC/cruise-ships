@@ -1,3 +1,5 @@
+
+
 html,
 body {
   height: 100%;
@@ -35,4 +37,24 @@ body {
   height:64px;
   background-image: url('../images/ship.png');
   position: absolute;
+}
+
+#sailButton {
+  border: 0;
+  background-color: #FB3640;
+  border-bottom: 4px solid #d8040f;
+  color: white;
+  font-family: inherit;
+  padding: 10px 20px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  font-family: 'Edu NSW ACT Foundation', cursive;
+}
+
+#sailbutton:focus {
+  background-color: #d8040f;
+  border-bottom-width: 0;
+  padding-top: 14px;
 }

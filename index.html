@@ -7,12 +7,15 @@
     <title>Cruise Ships</title>
     <link rel="stylesheet" href="./css/normalize.css" />
     <link rel="stylesheet" href="./css/style.css" />
-
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation&display=swap');
+    </style>
     
 
   </head>
   <body>
     <div id="viewport">
+      <button id="sailButton">Set Sail!</button>
       <div id="ports"></div>
       <div id="ship"></div>
     <script src="src/controller.js"></script>
@@ -30,7 +33,7 @@
       const controller = new Controller(ship);
       
       controller.renderPorts(itinerary.ports);
-      controller.renderShip(ship)
+      controller.renderShip()
     </script>
     </div>
   </body>
